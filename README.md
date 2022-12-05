@@ -5,16 +5,16 @@ Authenticate via LDAP or local server (snapshot for commit-20210305044929-56d696
 #Usage:
 Include module in app.conf
 
+```
 module.revauth=github.com/chengkun-kang/revauth
-
 ```
 
 Include module in conf/routes
-```
 
+```
 module:revauth
 
-#Configuration
+# Configuration
 
 // will authenticate via local mongoDB User model
 grpcauth.method="local"
@@ -24,15 +24,12 @@ grpcauth.method="grpc"
 
 grpcauth.server=localhost
 grpcauth.port=50051
+
 grpcAuthServer, ok := revel.Config.String("grpcauth.server")
 if !ok {
-panic("Authenticate server not defined")
+    panic("Authenticate server not defined")
 
-    }
-    grpcAuthPort := revel.Config.StringDefault("grpcauth.port", "50051")
-    grpcDial = grpcAuthServer + ":" + grpcAuthPort
-
-```
-
-
+}
+grpcAuthPort := revel.Config.StringDefault("grpcauth.port", "50051")
+grpcDial = grpcAuthServer + ":" + grpcAuthPort
 ```
